@@ -1,21 +1,19 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#include "tools.h"
 
 // ouput: pin 8
 // input: pin 3
 
-int main(void)
-{
-	DDRB |= (1 << DDB0);
-
-	DDRD &= ~(1 << DDD3);
-	PORTD |= (1 << PORTD3);
+int main(void) {
+	pinMode_OUTPUT(B, 0);
+	pinMode_PULLUP(D, 3);
 	
 	while(1) {
-		if ((PIND & (1 << PIND3)))
-			PORTB |= (1 << PORTB0);
+		if (digitalRead(D, 3) == 1)
+			digitalWrite_HIGH(B, 0);
 		else
-			PORTB &= ~(1 << PORTB0);
+			digitalWrite_LOW(B, 0);
 	}
 	return 0;
 }
