@@ -10,7 +10,7 @@ int main(void) {
 	pinMode_PULLUP(D, 3);
 	
 	while(1) {
-		if (digitalRead(D, 3) == 1)
+		if (digitalRead(D, 3) == true)
 			digitalWrite_HIGH(B, 0);
 		else
 			digitalWrite_LOW(B, 0);
